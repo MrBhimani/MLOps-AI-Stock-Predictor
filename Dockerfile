@@ -1,6 +1,6 @@
 # Build stage
 # FIX: Switched to Python 3.12 to support latest pandas_ta
-FROM python:3.12-slim as builder
+FROM python:3.12-slim AS builder
 
 WORKDIR /app
 
@@ -50,4 +50,5 @@ RUN mkdir -p data/processed reports && \
 EXPOSE 7860
 
 # Command to run Streamlit
+
 CMD ["streamlit", "run", "app.py", "--server.port", "7860", "--server.address", "0.0.0.0"]
