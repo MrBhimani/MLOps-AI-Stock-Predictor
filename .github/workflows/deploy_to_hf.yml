@@ -1,0 +1,92 @@
+name: Sync to Hugging Face Hub
+# Trigger deployment manually
+
+on:
+  push:
+    branches: [main]
+
+  # Make it manually triggerable
+  workflow_dispatch:
+
+jobs:
+  sync-to-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true  # CRITICAL: Fetch Git LFS files (actual binary models, not pointers)
+      
+      - name: Install Git LFS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+      
+      - name: Pull Git LFS files
+        run: |
+          git lfs pull
+          echo "Verifying LFS files were pulled..."
+          find models -name "*.pkl" -exec ls -lh {} \; | head -10
+          echo "Checking file sizes (should be > 1KB, not 132 bytes)..."
+          # Verify no files are suspiciously small (LFS pointers are ~132 bytes)
+          small_files=$(find models -name "*.pkl" -size -1k | wc -l)
+          if [ $small_files -gt 0 ]; then
+            echo "⚠️  WARNING: Found $small_files files smaller than 1KB (likely LFS pointers!)"
+            find models -name "*.pkl" -size -1k
+            exit 1
+          else
+            echo "✅ All model files are properly sized (not LFS pointers)"
+          fi
+      
+      - name: Install Python dependencies
+        run: pip install huggingface_hub
+
+      - name: Verify models exist
+        run: |
+          echo "Checking for model files..."
+          find models -name "*.pkl" | head -10
+          echo "Model files found: $(find models -name '*.pkl' | wc -l)"
+          echo "Sample file sizes:"
+          find models -name "*.pkl" -exec ls -lh {} \; | awk '{print $5, $9}' | head -10
+      
+      - name: Push to Hub (Python Mode)
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python -c "
+          from huggingface_hub import HfApi
+          import os
+          from pathlib import Path
+          
+          api = HfApi()
+          print('🚀 Starting upload to Hugging Face...')
+          
+          # Verify models directory exists
+          models_dir = Path('models')
+          if models_dir.exists():
+              pkl_files = list(models_dir.rglob('*.pkl'))
+              print(f'📦 Found {len(pkl_files)} model files to upload')
+              if len(pkl_files) > 0:
+                  # Show file sizes to verify they're real files
+                  for f in pkl_files[:5]:
+                      size = f.stat().st_size
+                      print(f'   {f.name}: {size:,} bytes')
+                      if size < 1024:
+                          print(f'   ⚠️  WARNING: {f.name} is suspiciously small ({size} bytes) - might be LFS pointer!')
+              else:
+                  print('⚠️  WARNING: No .pkl files found in models directory!')
+          else:
+              print('❌ ERROR: models directory does not exist!')
+          
+          # Upload the entire current directory to the Space
+          # Models directory is explicitly included
+          api.upload_folder(
+              folder_path='.',
+              repo_id='nvvy/nuqta-Stock-predictor',
+              repo_type='space',
+              token=os.environ['HF_TOKEN'],
+              ignore_patterns=['.git', '.github', '__pycache__', 'vocab.txt', '*.pyc', '.DS_Store', 'data/', 'reports/']
+          )
+          print('✅ Upload complete!')
+          "
