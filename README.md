@@ -1,5 +1,5 @@
 ---
-title: Nuqta - AI Stock Prediction System
+title: AI Stock Prediction System using MLOPs
 emoji: 📈
 colorFrom: blue
 colorTo: green
@@ -150,18 +150,6 @@ docker run -p 7860:7860 --env-file .env nuqta-predictor
 ```
 
 Access the app at `http://localhost:7860`.
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1.  Fork the repository.
-2.  Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
 
 ---
 Thank you.
