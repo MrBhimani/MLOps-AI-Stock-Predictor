@@ -1,4 +1,12 @@
 ---
+**This project was inspired by my experience teaching Data Visualization and Dashboard Design to students, where they successfully built insightful stock market dashboards using Tableau and Power BI. Observing their progress motivated me to extend this work further—from descriptive and visual analytics toward predictive intelligence using AI and MLOps practices.**
+
+**As a learner, Nuqta represents my journey into AI-driven stock prediction, real-world ML system design, and end-to-end MLOps pipelines. The goal of this project is not only prediction accuracy, but also learning how production-ready ML systems are built, deployed, monitored, and improved continuously.**
+
+**I am sincerely thankful to Vladislav Naumov for his guidance, mentorship, and continuous support. His teaching approach and encouragement toward innovation played a key role in motivating me to explore this domain and build something meaningful beyond the classroom.**
+---
+
+---
 title: Nuqta - AI Stock Prediction System
 emoji: 📈
 colorFrom: blue
@@ -16,7 +24,7 @@ app_port: 7860
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=Streamlit&logoColor=white)](https://streamlit.io/)
 [![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 
-**Nuqta** is an advanced **End-to-End Machine Learning System** designed for real-time stock price prediction and market regime analysis. It leverages ensemble modeling (Linear Regression, Random Forest, SVM) and unsupervised learning to provide actionable financial insights through a premium, "Modern Islamic FinTech" aesthetic dashboard.
+**Nuqta** is an advanced **End-to-End Machine Learning System** designed for real-time stock price prediction and market regime analysis. It leverages ensemble modeling (Linear Regression, Random Forest, SVM) and unsupervised learning to provide actionable financial insights through a premium, "Modern FinTech" aesthetic dashboard.
 
 ---
 
@@ -60,7 +68,7 @@ Check out the deployed application on Hugging Face Spaces:
 mlops-project/
 ├── .github/              # CI/CD workflows (GitHub Actions)
 ├── data/                 # Raw and processed datasets
-├── models/               # Serialized trained models (.pkl)
+├── models/               # Serialized trained models (.pkl) generate after running
 ├── src/                  # Source code modules
 │   ├── api/              # API endpoints (if applicable)
 │   ├── ingestion/        # Data fetching scripts
