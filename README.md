@@ -1,12 +1,4 @@
 ---
-**This project was inspired by my experience teaching Data Visualization and Dashboard Design to students, where they successfully built insightful stock market dashboards using Tableau and Power BI. Observing their progress motivated me to extend this work further—from descriptive and visual analytics toward predictive intelligence using AI and MLOps practices.**
-
-**As a learner, Nuqta represents my journey into AI-driven stock prediction, real-world ML system design, and end-to-end MLOps pipelines. The goal of this project is not only prediction accuracy, but also learning how production-ready ML systems are built, deployed, monitored, and improved continuously.**
-
-**I am sincerely thankful to Vladislav Naumov for his guidance, mentorship, and continuous support. His teaching approach and encouragement toward innovation played a key role in motivating me to explore this domain and build something meaningful beyond the classroom.**
----
-
----
 title: Nuqta - AI Stock Prediction System
 emoji: 📈
 colorFrom: blue
@@ -15,6 +7,15 @@ sdk: docker
 pinned: false
 app_port: 7860
 ---
+
+### 🌱 Inspiration & Acknowledgement
+
+This project was inspired by my experience **teaching Data Visualization** and Dashboard Design to students, where they successfully built insightful stock market dashboards using Tableau and Power BI. Observing their progress motivated me to extend this work further—from descriptive and visual analytics toward predictive intelligence using AI and MLOps practices.
+
+As a learner, Nuqta represents my journey into AI-driven stock prediction, real-world ML system design, and end-to-end MLOps pipelines. The goal of this project is not only prediction accuracy, but also learning how production-ready ML systems are built, deployed, monitored, and improved continuously.
+
+I am sincerely thankful to **Vladislav Naumov** for his guidance, mentorship, and continuous support. His teaching approach and encouragement toward innovation played a key role in motivating me to explore this domain and build something meaningful beyond the classroom.
+
 
 # Nuqta | AI Market Insight & Stock Predictor
 
