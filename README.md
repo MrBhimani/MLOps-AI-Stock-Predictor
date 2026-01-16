@@ -66,7 +66,7 @@ Check out the deployed application on Hugging Face Spaces:
 ## � Project Structure
 
 ```bash
-mlops-project/
+MLOps-AI-Stock-Predictor/
 ├── .github/              # CI/CD workflows (GitHub Actions)
 ├── data/                 # Raw and processed datasets
 ├── models/               # Serialized trained models (.pkl) generate after running
@@ -80,6 +80,7 @@ mlops-project/
 ├── app.py                # Main Streamlit application entry point
 ├── Dockerfile            # Container configuration
 ├── requirements.txt      # Python dependencies
+├── docs/                 # Project Report
 └── README.md             # Project documentation
 ```
 
