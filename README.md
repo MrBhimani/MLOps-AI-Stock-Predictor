@@ -90,7 +90,7 @@ Follow these steps to run the project locally.
 
 ```bash
 git clone https://github.com/MrBhimani/MLOps-AI-Stock-Predictor.git
-cd mlops-project
+cd MLOps-AI-Stock-Predictor
 ```
 
 ### 3. Set Up Environment
