@@ -1,3 +1,8 @@
+import os
+import glob
+import hydra
+from omegaconf import DictConfig
+from hydra.utils import to_absolute_path
 import pandas as pd
 import torch
 from torch.utils.data import DataLoader, TensorDataset
@@ -18,19 +23,37 @@ def load_data(csv_path):
     return TensorDataset(X, y), X.shape[1]
 
 
-def main():
-    dataset, input_dim = load_data("data/processed/AAPL_processed.csv")
+@hydra.main(version_base=None, config_path="../conf", config_name="config")
+def main(cfg: DictConfig):
 
-    train_loader = DataLoader(dataset, batch_size=32, shuffle=True)
+    processed_dir = to_absolute_path(cfg.data.processed_dir)
+    csv_files = glob.glob(os.path.join(processed_dir, "*_processed.csv"))
 
-    model = StockPredictor(input_dim=input_dim)
+    if not csv_files:
+        raise ValueError(f"No processed CSV files found in {processed_dir}")
 
-    trainer = pl.Trainer(
-        max_epochs=10,
-        log_every_n_steps=1,
-    )
+    for csv_path in csv_files:
+        print(f"Training on {os.path.basename(csv_path)}")
 
-    trainer.fit(model, train_loader)
+        dataset, input_dim = load_data(csv_path)
+
+        train_loader = DataLoader(
+            dataset,
+            batch_size=cfg.training.batch_size,
+            shuffle=True,
+        )
+
+        model = StockPredictor(
+            input_dim=input_dim,
+            lr=cfg.training.learning_rate,
+        )
+
+        trainer = pl.Trainer(
+            max_epochs=cfg.training.max_epochs,
+            log_every_n_steps=cfg.trainer.log_every_n_steps,
+        )
+
+        trainer.fit(model, train_loader)
 
 
 if __name__ == "__main__":
