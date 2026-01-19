@@ -178,5 +178,9 @@ All training parameters and data paths are defined in YAML configs.
 
 This project uses **MLflow** for experiment tracking.
 
+## Inference & Model Packaging
+
+Trained models are saved as artifacts and reused for inference.
+
 ---
 Thank you.
