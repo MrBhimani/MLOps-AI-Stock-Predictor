@@ -8,6 +8,9 @@ pinned: false
 app_port: 7860
 ---
 
+This project uses **pre-commit hooks** to enforce code quality standards.
+Enabled tools: black (code formatting), isort (import sorting), flake8 (linting), basic Git hygiene checks
+
 ### 🌱 Inspiration & Acknowledgement
 
 This project was inspired by my experience **teaching Data Visualization** and Dashboard Design to students, where they successfully built insightful stock market dashboards using Tableau and Power BI. Observing their progress motivated me to extend this work further—from descriptive and visual analytics toward predictive intelligence using AI and MLOps practices.
@@ -16,6 +19,8 @@ As a learner, Nuqta represents my journey into AI-driven stock prediction, real-
 
 I am sincerely thankful to **Vladislav Naumov** for his guidance, mentorship, and continuous support. His teaching approach and encouragement toward innovation played a key role in motivating me to explore this domain and build something meaningful beyond the classroom.
 
+### Dataset availability
+Market data (Open, High, Low, Close, Volume) is sourced in real time from Alpha Vantage via its public REST API. Users must obtain a free API key from Alpha Vantage and configure it locally to enable data ingestion.
 
 # Nuqta | AI Market Insight & Stock Predictor
 
