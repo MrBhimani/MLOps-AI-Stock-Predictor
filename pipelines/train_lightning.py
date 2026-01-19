@@ -71,5 +71,8 @@ def main(cfg: DictConfig):
 
         trainer.fit(model, train_loader)
 
+        os.makedirs("artifacts/models", exist_ok=True)
+        torch.save(model.state_dict(), "artifacts/models/stock_predictor.pt")
+
 if __name__ == "__main__":
     main()
