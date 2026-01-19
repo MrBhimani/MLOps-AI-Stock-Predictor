@@ -19,20 +19,15 @@ As a learner, Nuqta represents my journey into AI-driven stock prediction, real-
 
 I am sincerely thankful to **Vladislav Naumov** for his guidance, mentorship, and continuous support. His teaching approach and encouragement toward innovation played a key role in motivating me to explore this domain and build something meaningful beyond the classroom.
 
-### Dataset availability
-Market data (Open, High, Low, Close, Volume) is sourced in real time from Alpha Vantage via its public REST API. Users must obtain a free API key from Alpha Vantage and configure it locally to enable data ingestion.
-
-## Data Management (DVC)
+## 📊 Data Management (DVC)
 
 This project uses **DVC (Data Version Control)** for dataset management.
 
-⚠️ Raw datasets are **not stored on GitHub**.
-Only DVC metadata (`data/raw.dvc`) is tracked in Git.
+⚠️ **Raw datasets are NOT stored on GitHub**  
+Only DVC metadata files (e.g. `data/raw.dvc`) are tracked in Git.
 
-To download the raw data locally:
-```bash
-dvc pull
-'''
+### Dataset availability
+Market data (Open, High, Low, Close, Volume) is sourced in real time from Alpha Vantage via its public REST API. Users must obtain a free API key from Alpha Vantage and configure it locally to enable data ingestion.
 
 # Nuqta | AI Market Insight & Stock Predictor
 
