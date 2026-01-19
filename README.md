@@ -172,7 +172,11 @@ Model training is implemented using **PyTorch Lightning**
 
 This project uses **Hydra** for configuration management.
 
-All training parameters and data paths are defined in YAML configs..
+All training parameters and data paths are defined in YAML configs.
+
+## Experiment Tracking & Logging
+
+This project uses **MLflow** for experiment tracking.
 
 ---
 Thank you.
