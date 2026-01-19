@@ -50,3 +50,6 @@ docker-compose.override.yml
 # Prefect
 .prefect/
 TROUBLESHOOTING.md
+
+# MLflow
+mlruns/
