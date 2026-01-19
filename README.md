@@ -80,14 +80,23 @@ Check out the deployed application on Hugging Face Spaces:
 ```bash
 MLOps-AI-Stock-Predictor/
 ├── .github/              # CI/CD workflows (GitHub Actions)
-├── data/                 # Raw and processed datasets
-├── models/               # Serialized trained models (.pkl) generate after running
+├── .dvc/                 # DVC internal metadata
+├── .dvcignore
+├── conf/                 # Hydra configuration
+│   └── config.yaml
+├── data/
+│   ├── raw.dvc           # DVC metadata for raw data
+│   └── processed/        # Processed CSVs (tracked in Git)
+├── models/               # Serialized trained models (.pkl) generate after running & lightning_model.py
 ├── src/                  # Source code modules
 │   ├── api/              # API endpoints (if applicable)
 │   ├── ingestion/        # Data fetching scripts
 │   ├── processing/       # Feature engineering & preprocessing
 │   ├── models/           # Model definitions & training logic
 │   ├── orchestration/    # Prefect flows & monitoring scripts
+├── pipelines/            # training & inference entry points
+│   ├── train_lightning.py# Training (Lightning + Hydra + MLflow)
+│   └── infer.py          # Inference script (CLI-based)
 ├── tests/                # Unit and integration tests
 ├── app.py                # Main Streamlit application entry point
 ├── Dockerfile            # Container configuration
