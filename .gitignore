@@ -35,11 +35,13 @@ ENV/
 *.swp
 *.swo
 
-# Project Specific
-data/
-reports/
+# Project Specific (DVC)
+data/raw/*
+data/processed/*
+!data/raw.dvc
 !data/.gitkeep
-!models/.gitkeep
+
+reports/
 !reports/.gitkeep
 
 # Docker
