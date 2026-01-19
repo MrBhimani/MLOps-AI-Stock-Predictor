@@ -53,3 +53,6 @@ TROUBLESHOOTING.md
 
 # MLflow
 mlruns/
+
+# Model artifacts
+artifacts/
