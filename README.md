@@ -32,6 +32,7 @@ Only DVC metadata (`data/raw.dvc`) is tracked in Git.
 To download the raw data locally:
 ```bash
 dvc pull
+'''
 
 # Nuqta | AI Market Insight & Stock Predictor
 
