@@ -7,7 +7,8 @@ import pandas as pd
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 import pytorch_lightning as pl
-
+from pytorch_lightning.loggers import MLFlowLogger
+import mlflow
 from models.lightning_model import StockPredictor
 
 
@@ -48,13 +49,27 @@ def main(cfg: DictConfig):
             lr=cfg.training.learning_rate,
         )
 
+        mlflow.set_tracking_uri("file:./mlruns")
+
+        mlflow_logger = MLFlowLogger(
+            experiment_name="stock_prediction",
+            tracking_uri="file:./mlruns",
+        )
+        
         trainer = pl.Trainer(
             max_epochs=cfg.training.max_epochs,
             log_every_n_steps=cfg.trainer.log_every_n_steps,
+            logger=mlflow_logger,
         )
+        
+        mlflow_logger.log_hyperparams({
+            "batch_size": cfg.training.batch_size,
+            "learning_rate": cfg.training.learning_rate,
+            "max_epochs": cfg.training.max_epochs,
+        })
+
 
         trainer.fit(model, train_loader)
-
 
 if __name__ == "__main__":
     main()
