@@ -22,6 +22,17 @@ I am sincerely thankful to **Vladislav Naumov** for his guidance, mentorship, an
 ### Dataset availability
 Market data (Open, High, Low, Close, Volume) is sourced in real time from Alpha Vantage via its public REST API. Users must obtain a free API key from Alpha Vantage and configure it locally to enable data ingestion.
 
+## Data Management (DVC)
+
+This project uses **DVC (Data Version Control)** for dataset management.
+
+⚠️ Raw datasets are **not stored on GitHub**.
+Only DVC metadata (`data/raw.dvc`) is tracked in Git.
+
+To download the raw data locally:
+```bash
+dvc pull
+
 # Nuqta | AI Market Insight & Stock Predictor
 
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/nvvy/nuqta-Stock-predictor)
