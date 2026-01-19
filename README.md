@@ -166,7 +166,13 @@ Access the app at `http://localhost:7860`.
 
 ## Model Training
 
-Model training is implemented using **PyTorch Lightning**.
+Model training is implemented using **PyTorch Lightning**
+
+## Configuration Management (Hydra)
+
+This project uses **Hydra** for configuration management.
+
+All training parameters and data paths are defined in YAML configs..
 
 ---
 Thank you.
