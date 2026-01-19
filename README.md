@@ -164,5 +164,9 @@ docker run -p 7860:7860 --env-file .env nuqta-predictor
 
 Access the app at `http://localhost:7860`.
 
+## Model Training
+
+Model training is implemented using **PyTorch Lightning**.
+
 ---
 Thank you.
