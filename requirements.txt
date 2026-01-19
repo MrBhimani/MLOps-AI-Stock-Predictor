@@ -16,3 +16,7 @@ flake8>=7.0.0
 
 
 scipy>=1.10.0
+
+torch>=2.0.0
+pytorch-lightning>=2.2.0
+torchmetrics
